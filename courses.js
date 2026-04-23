@@ -619,11 +619,15 @@ function setupEventListeners() {
         });
 
         // Load saved theme
-        const savedTheme = localStorage.getItem('talex-theme');
+        const savedTheme = localStorage.getItem('talex-theme') || 'dark';
         if (savedTheme === 'dark') {
             document.body.classList.add('dark-theme');
             themeDark.classList.add('active');
             themeLight.classList.remove('active');
+        } else {
+            document.body.classList.remove('dark-theme');
+            themeLight.classList.add('active');
+            themeDark.classList.remove('active');
         }
     }
 }
