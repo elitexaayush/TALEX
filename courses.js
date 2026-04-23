@@ -643,6 +643,29 @@ function confirmEnrollment(course) {
 }
 
 function executeEnrollment(course) {
+    // Find the specific card element
+    const cards = document.querySelectorAll('.explore-card');
+    let targetCard = null;
+    cards.forEach(card => {
+        if (card.querySelector('.enroll-btn').dataset.id == course.id) {
+            targetCard = card;
+        }
+    });
+
+    if (targetCard) {
+        // Play enrollment animation
+        targetCard.classList.add('enrolling');
+        
+        // Wait for animation to finish before updating UI completely
+        setTimeout(() => {
+            finalizeEnrollment(course);
+        }, 800);
+    } else {
+        finalizeEnrollment(course);
+    }
+}
+
+function finalizeEnrollment(course) {
     userCredits -= course.cost;
     enrolledCourses.push(course.id);
     
@@ -661,9 +684,9 @@ function executeEnrollment(course) {
     }
 
     // Success Toast
-    showToast(`You're enrolled! "${course.title}" added to My Courses.`, 'success');
+    showToast(`🎉 You're enrolled! "${course.title}" added to My Courses.`, 'success');
     
-    // Simulate adding to "My Courses" section (optional, logic depends on how My Courses is rendered)
+    // Add to "My Courses" section
     updateMyCoursesSection(course);
 }
 
