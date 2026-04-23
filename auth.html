@@ -329,8 +329,8 @@
             <!-- Login Form -->
             <form id="login-form" class="auth-form active">
                 <div class="input-group">
-                    <i data-lucide="mail"></i>
-                    <input type="email" placeholder="Email Address" required id="login-email">
+                    <i data-lucide="user"></i>
+                    <input type="text" placeholder="User Name" required id="login-username">
                 </div>
                 <div class="input-group">
                     <i data-lucide="lock"></i>
@@ -368,7 +368,7 @@
                     <input type="password" placeholder="Confirm Password" required id="signup-confirm">
                 </div>
                 <button type="submit" class="btn-launch">
-                    Join TALEX <i data-lucide="user-plus"></i>
+                    Register <i data-lucide="user-plus"></i>
                 </button>
             </form>
         </div>
@@ -479,11 +479,9 @@
                             userName = nameInput.value;
                         }
                     } else if (form.id === 'login-form') {
-                        const emailInput = document.getElementById('login-email');
-                        if (emailInput && emailInput.value) {
-                            // Extract name from email (e.g., rahul.sharma@... -> Rahul Sharma)
-                            const emailPrefix = emailInput.value.split('@')[0];
-                            userName = emailPrefix.split('.').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                        const usernameInput = document.getElementById('login-username');
+                        if (usernameInput && usernameInput.value) {
+                            userName = usernameInput.value;
                         }
                     }
                     localStorage.setItem('talex-user-name', userName);
