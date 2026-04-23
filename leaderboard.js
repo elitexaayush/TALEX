@@ -57,8 +57,31 @@ const studentsData = [
     { id: "s3", name: "Michael Chen", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael", scores: { badges: 70, academic: 95, problem_solving: 82, hackathon: 60, participation: 75, streak: 30, collaboration: 65 }, previous_rank: 5, tier: "Gold" },
     { id: "s14", name: "Mia Hernandez", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mia", scores: { badges: 92, academic: 88, problem_solving: 96, hackathon: 92, participation: 90, streak: 65, collaboration: 98 }, previous_rank: 14, tier: "Legend" },
     { id: "s10", name: "Sophia Martinez", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sophia", scores: { badges: 88, academic: 94, problem_solving: 90, hackathon: 88, participation: 95, streak: 50, collaboration: 95 }, previous_rank: 7, tier: "Diamond" }
-    // ... truncated for brevity in UI, but engine handles all
 ];
+
+// Dynamically generate 50 additional mock students
+const firstNames = ["James", "Emma", "Olivia", "Liam", "Noah", "William", "Sophia", "Isabella", "Mason", "Evelyn", "Ethan", "Ava", "Logan", "Mia", "Lucas", "Charlotte", "Oliver", "Amelia", "Elijah", "Harper", "Aiden", "Abigail", "Benjamin", "Emily", "Jacob", "Elizabeth", "Jackson", "Mila", "Carter", "Ella", "Sebastian", "Avery", "Alexander", "Sofia", "Jack", "Camila", "Luke", "Aria", "Jayden", "Scarlett", "Dylan", "Victoria", "Grayson", "Madison", "Levi", "Luna", "Isaac", "Grace", "Gabriel", "Chloe"];
+const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker", "Young", "Allen", "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams", "Nelson", "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts"];
+
+for(let i = 0; i < 50; i++) {
+    const fullName = firstNames[i] + " " + lastNames[i];
+    studentsData.push({
+        id: "gen_" + i,
+        name: fullName,
+        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=" + fullName.replace(" ", ""),
+        scores: {
+            badges: Math.floor(Math.random() * 50) + 40,
+            academic: Math.floor(Math.random() * 25) + 70,
+            problem_solving: Math.floor(Math.random() * 35) + 60,
+            hackathon: Math.floor(Math.random() * 60) + 30,
+            participation: Math.floor(Math.random() * 40) + 50,
+            streak: Math.floor(Math.random() * 30) + 10,
+            collaboration: Math.floor(Math.random() * 40) + 50
+        },
+        previous_rank: Math.floor(Math.random() * 60) + 1,
+        tier: "Unranked"
+    });
+}
 
 function renderLeaderboardView() {
     const grid = document.getElementById('leaderboard-grid');
