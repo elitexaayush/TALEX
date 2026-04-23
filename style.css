@@ -52,6 +52,26 @@ body {
     position: relative;
 }
 
+#cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(56, 189, 248, 0.05) 45%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: multiply; /* Better for light backgrounds */
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+
+body:hover #cursor-glow {
+    opacity: 1;
+}
+
 /* High-End Educational Animation Background */
 .animated-bg {
     position: fixed;

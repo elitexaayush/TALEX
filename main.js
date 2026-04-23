@@ -94,3 +94,30 @@ const communitySection = document.querySelector('.community-banner');
 if (communitySection) {
     communityObserver.observe(communitySection);
 }
+
+// Cursor Glow Follow Logic (Smooth Easing)
+const cursorGlow = document.getElementById('cursor-glow');
+if (cursorGlow) {
+    let mouseX = 0;
+    let mouseY = 0;
+    let glowX = 0;
+    let glowY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    const updateGlow = () => {
+        // Smooth interpolation (0.1 = high lag/smoothness, 0.2 = snappier)
+        glowX += (mouseX - glowX) * 0.15;
+        glowY += (mouseY - glowY) * 0.15;
+        
+        cursorGlow.style.left = glowX + 'px';
+        cursorGlow.style.top = glowY + 'px';
+        
+        requestAnimationFrame(updateGlow);
+    };
+    
+    updateGlow();
+}

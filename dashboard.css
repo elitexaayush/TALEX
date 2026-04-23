@@ -64,6 +64,31 @@ body {
     position: relative;
 }
 
+#cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, rgba(56, 189, 248, 0.05) 50%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: multiply;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+
+body.dark-theme #cursor-glow {
+    mix-blend-mode: screen;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(56, 189, 248, 0.1) 50%, transparent 70%);
+}
+
+body:hover #cursor-glow {
+    opacity: 1;
+}
+
 /* High-End Educational Animation Background */
 .animated-bg {
     position: fixed;
