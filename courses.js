@@ -361,12 +361,14 @@ const navProfile = document.getElementById('nav-profile');
 const navLeaderboard = document.getElementById('nav-leaderboard');
 const navBadges = document.getElementById('nav-badges');
 const navEvents = document.getElementById('nav-events');
+const navSettings = document.getElementById('nav-settings');
 
 const viewCommunity = document.getElementById('view-community');
 const viewProfile = document.getElementById('view-profile');
 const viewLeaderboard = document.getElementById('view-leaderboard');
 const viewBadges = document.getElementById('view-badges');
 const viewEvents = document.getElementById('view-events');
+const viewSettings = document.getElementById('view-settings');
 
 function setupNavigation() {
     navHome.onclick = (e) => {
@@ -414,6 +416,25 @@ function setupNavigation() {
             switchView('events');
         };
     }
+    if (navSettings) {
+        navSettings.onclick = (e) => {
+            e.preventDefault();
+            switchView('settings');
+        };
+    }
+
+    // Settings Inner Tabs Logic
+    const settingsTabs = document.querySelectorAll('.settings-tab');
+    settingsTabs.forEach(tab => {
+        tab.onclick = () => {
+            settingsTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            document.querySelectorAll('.settings-panel').forEach(p => p.style.display = 'none');
+            const targetPanel = document.getElementById(`setting-${tab.dataset.tab}`);
+            if (targetPanel) targetPanel.style.display = 'block';
+        };
+    });
 }
 
 function switchView(viewId) {
@@ -426,6 +447,7 @@ function switchView(viewId) {
     if (viewId === 'leaderboard' && navLeaderboard) navLeaderboard.classList.add('active');
     if (viewId === 'badges' && navBadges) navBadges.classList.add('active');
     if (viewId === 'events' && navEvents) navEvents.classList.add('active');
+    if (viewId === 'settings' && navSettings) navSettings.classList.add('active');
 
     // Update Views
     document.querySelectorAll('.dashboard-view').forEach(view => view.classList.remove('active'));
@@ -453,6 +475,9 @@ function switchView(viewId) {
     if (viewId === 'events' && viewEvents) {
         viewEvents.classList.add('active');
         if (typeof renderEventsView === 'function') renderEventsView();
+    }
+    if (viewId === 'settings' && viewSettings) {
+        viewSettings.classList.add('active');
     }
 }
 

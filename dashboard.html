@@ -94,7 +94,7 @@
                 <a href="#" class="menu-item" id="nav-badges"><i data-lucide="award"></i> <span>Badges Earned</span></a>
                 <a href="#" class="menu-item" id="nav-community"><i data-lucide="users"></i> <span>Community Hub</span></a>
                 <a href="#" class="menu-item" id="nav-profile"><i data-lucide="user"></i> <span>My Profile</span></a>
-                <a href="#" class="menu-item"><i data-lucide="settings"></i> <span>Settings</span></a>
+                <a href="#" class="menu-item" id="nav-settings"><i data-lucide="settings"></i> <span>Settings</span></a>
             </nav>
         </aside>
 
@@ -522,6 +522,110 @@
 
                 <div id="events-grid" class="events-grid-container">
                     <!-- Event cards will be rendered here -->
+                </div>
+            </div>
+            <!-- Settings View -->
+            <div id="view-settings" class="dashboard-view">
+                <div class="section-header">
+                    <div>
+                        <h2>Settings</h2>
+                        <p class="section-subtitle">Manage your account preferences and personal information.</p>
+                    </div>
+                </div>
+
+                <div class="settings-container">
+                    <div class="settings-sidebar">
+                        <button class="settings-tab active" data-tab="profile"><i data-lucide="user"></i> Edit Profile</button>
+                        <button class="settings-tab" data-tab="notifications"><i data-lucide="bell"></i> Notifications</button>
+                        <button class="settings-tab" data-tab="security"><i data-lucide="shield"></i> Security</button>
+                        <button class="settings-tab" data-tab="appearance"><i data-lucide="monitor"></i> Appearance</button>
+                    </div>
+                    
+                    <div class="settings-content">
+                        <!-- Profile Settings -->
+                        <div class="settings-panel active" id="setting-profile">
+                            <h3>Profile Information</h3>
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" class="form-input" value="Alex Johnson">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" class="form-input" value="alex.j@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Bio</label>
+                                    <textarea class="form-input" rows="3">Passionate frontend developer exploring the intersection of UI/UX and engineering.</textarea>
+                                </div>
+                                <button class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </div>
+
+                        <!-- Notification Settings -->
+                        <div class="settings-panel" id="setting-notifications" style="display: none;">
+                            <h3>Notification Preferences</h3>
+                            <div class="settings-list">
+                                <div class="settings-list-item">
+                                    <div>
+                                        <strong>Email Notifications</strong>
+                                        <p>Receive updates about course enrollments and completions.</p>
+                                    </div>
+                                    <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
+                                </div>
+                                <div class="settings-list-item">
+                                    <div>
+                                        <strong>Event Reminders</strong>
+                                        <p>Get notified 24 hours before a workshop or hackathon starts.</p>
+                                    </div>
+                                    <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
+                                </div>
+                                <div class="settings-list-item">
+                                    <div>
+                                        <strong>Marketing Updates</strong>
+                                        <p>Receive weekly newsletters and special offers.</p>
+                                    </div>
+                                    <label class="toggle-switch"><input type="checkbox"><span class="slider"></span></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Security Settings -->
+                        <div class="settings-panel" id="setting-security" style="display: none;">
+                            <h3>Account Security</h3>
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label>Current Password</label>
+                                    <input type="password" class="form-input" placeholder="••••••••">
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <input type="password" class="form-input" placeholder="••••••••">
+                                </div>
+                                <button class="btn btn-primary">Update Password</button>
+                            </div>
+                            <div class="danger-zone" style="margin-top: 3rem;">
+                                <h3>Danger Zone</h3>
+                                <p style="color: var(--text-gray); margin-bottom: 1rem;">Once you delete your account, there is no going back. Please be certain.</p>
+                                <button class="btn btn-primary-outline" style="color: var(--primary-rose); border-color: var(--primary-rose);">Delete Account</button>
+                            </div>
+                        </div>
+
+                        <!-- Appearance Settings -->
+                        <div class="settings-panel" id="setting-appearance" style="display: none;">
+                            <h3>Theme & Appearance</h3>
+                            <div class="theme-options">
+                                <div class="theme-card active">
+                                    <div class="theme-preview light"></div>
+                                    <span>Light Mode</span>
+                                </div>
+                                <div class="theme-card">
+                                    <div class="theme-preview dark"></div>
+                                    <span>Dark Mode</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
