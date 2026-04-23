@@ -1476,6 +1476,148 @@ body {
     to { background-position-x: -200%; }
 }
 
+/* Events & Hackathons View */
+.events-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.event-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    transition: var(--transition-bounce);
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: var(--event-color, var(--primary-indigo));
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--event-color, var(--primary-indigo));
+}
+
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.event-icon-wrap {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--event-color) 15%, transparent);
+    color: var(--event-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-type {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--event-color);
+    background: color-mix(in srgb, var(--event-color) 10%, transparent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+}
+
+.event-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.event-desc {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.event-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+}
+
+.meta-item i {
+    width: 16px;
+    height: 16px;
+}
+
+.event-reward {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    background: #F8FAFC;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.event-reward i {
+    color: var(--primary-indigo);
+}
+
+.reward-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.reward-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.reward-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.event-register-btn {
+    background: var(--bg-light);
+    color: var(--text-dark);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.event-card:hover .event-register-btn {
+    background: var(--event-color);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 15px color-mix(in srgb, var(--event-color) 30%, transparent);
+}
+
 @media (max-width: 768px) {
     .modal-actions {
         flex-direction: column;

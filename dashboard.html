@@ -88,7 +88,7 @@
                     <span>Explore Courses</span>
                 </a>
                 <a href="#" class="menu-item"><i data-lucide="repeat"></i> <span>Skill Swap</span></a>
-                <a href="#" class="menu-item"><i data-lucide="calendar"></i> <span>Events & Hackathons</span></a>
+                <a href="#" class="menu-item" id="nav-events"><i data-lucide="calendar"></i> <span>Events & Hackathons</span></a>
                 <a href="#" class="menu-item" id="nav-leaderboard"><i data-lucide="trophy"></i> <span>Leaderboard</span></a>
                 <a href="#" class="menu-item" id="nav-publish-sidebar"><i data-lucide="plus-circle"></i> <span>Publish Content</span></a>
                 <a href="#" class="menu-item" id="nav-badges"><i data-lucide="award"></i> <span>Badges Earned</span></a>
@@ -502,6 +502,28 @@
                     <!-- Badges will be rendered here -->
                 </div>
             </div>
+            <!-- Events & Hackathons View -->
+            <div id="view-events" class="dashboard-view">
+                <div class="section-header">
+                    <div>
+                        <h2>Events & Hackathons</h2>
+                        <p class="section-subtitle">Participate in workshops, test series, and global hackathons to earn exclusive Badges.</p>
+                    </div>
+                </div>
+                
+                <div class="filter-bar" style="margin-top: 1rem; margin-bottom: 2rem;">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active">All</button>
+                        <button class="filter-btn">Hackathons</button>
+                        <button class="filter-btn">Workshops</button>
+                        <button class="filter-btn">Test Series</button>
+                    </div>
+                </div>
+
+                <div id="events-grid" class="events-grid-container">
+                    <!-- Event cards will be rendered here -->
+                </div>
+            </div>
         </main>
     </div>
 
@@ -625,6 +647,7 @@
     <script src="cms.js"></script>
     <script src="leaderboard.js"></script>
     <script src="badges.js"></script>
+    <script src="events.js"></script>
     <script>
         lucide.createIcons();
 

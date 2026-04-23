@@ -360,11 +360,13 @@ const navCommunity = document.getElementById('nav-community');
 const navProfile = document.getElementById('nav-profile');
 const navLeaderboard = document.getElementById('nav-leaderboard');
 const navBadges = document.getElementById('nav-badges');
+const navEvents = document.getElementById('nav-events');
 
 const viewCommunity = document.getElementById('view-community');
 const viewProfile = document.getElementById('view-profile');
 const viewLeaderboard = document.getElementById('view-leaderboard');
 const viewBadges = document.getElementById('view-badges');
+const viewEvents = document.getElementById('view-events');
 
 function setupNavigation() {
     navHome.onclick = (e) => {
@@ -406,6 +408,12 @@ function setupNavigation() {
             switchView('badges');
         };
     }
+    if (navEvents) {
+        navEvents.onclick = (e) => {
+            e.preventDefault();
+            switchView('events');
+        };
+    }
 }
 
 function switchView(viewId) {
@@ -417,6 +425,7 @@ function switchView(viewId) {
     if (viewId === 'profile' && navProfile) navProfile.classList.add('active');
     if (viewId === 'leaderboard' && navLeaderboard) navLeaderboard.classList.add('active');
     if (viewId === 'badges' && navBadges) navBadges.classList.add('active');
+    if (viewId === 'events' && navEvents) navEvents.classList.add('active');
 
     // Update Views
     document.querySelectorAll('.dashboard-view').forEach(view => view.classList.remove('active'));
@@ -440,6 +449,10 @@ function switchView(viewId) {
     if (viewId === 'badges' && viewBadges) {
         viewBadges.classList.add('active');
         if (typeof renderBadgesView === 'function') renderBadgesView();
+    }
+    if (viewId === 'events' && viewEvents) {
+        viewEvents.classList.add('active');
+        if (typeof renderEventsView === 'function') renderEventsView();
     }
 }
 
