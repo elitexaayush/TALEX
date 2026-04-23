@@ -72,7 +72,7 @@ function renderEventsView() {
     if (!container) return;
 
     container.innerHTML = eventsData.map(event => `
-        <div class="event-card" style="--event-color: ${event.color}">
+        <div class="event-card-v2" style="--event-color: ${event.color}">
             <div class="event-header">
                 <div class="event-icon-wrap">
                     <i data-lucide="${event.icon}"></i>
@@ -101,8 +101,8 @@ function renderEventsView() {
                 </div>
             </div>
             
-            <button class="btn btn-primary btn-block event-register-btn" onclick="registerEvent('${event.id}')">
-                Register Now
+            <button class="btn-register-event" onclick="registerEvent('${event.id}')">
+                Register for ${event.type}
             </button>
         </div>
     `).join('');

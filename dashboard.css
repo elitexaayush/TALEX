@@ -1734,29 +1734,31 @@ body.dark-theme .talent-card {
     gap: 2rem;
 }
 
-.event-card {
+.event-card-v2 {
     background: var(--bg-card);
-    border-radius: 20px;
+    border-radius: 24px;
     padding: 2rem;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border);
     transition: var(--transition-bounce);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-.event-card::before {
+.event-card-v2::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 6px;
+    height: 8px;
     background: var(--event-color, var(--primary-indigo));
 }
 
-.event-card:hover {
-    transform: translateY(-5px);
+.event-card-v2:hover {
+    transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
     border-color: var(--event-color, var(--primary-indigo));
 }
@@ -1765,13 +1767,13 @@ body.dark-theme .talent-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .event-icon-wrap {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
     background: color-mix(in srgb, var(--event-color) 15%, transparent);
     color: var(--event-color);
     display: flex;
@@ -1779,32 +1781,39 @@ body.dark-theme .talent-card {
     justify-content: center;
 }
 
+.event-icon-wrap i {
+    width: 28px;
+    height: 28px;
+}
+
 .event-type {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 800;
     text-transform: uppercase;
     color: var(--event-color);
-    background: color-mix(in srgb, var(--event-color) 10%, transparent);
-    padding: 0.3rem 0.8rem;
+    background: color-mix(in srgb, var(--event-color) 12%, transparent);
+    padding: 0.4rem 1rem;
     border-radius: 50px;
 }
 
 .event-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 0.75rem;
     color: var(--text-dark);
 }
 
 .event-desc {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-gray);
     margin-bottom: 1.5rem;
-    line-height: 1.5;
+    line-height: 1.6;
+    flex: 1;
 }
 
 .event-meta {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--border);
@@ -1813,28 +1822,33 @@ body.dark-theme .talent-card {
 .meta-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
+    gap: 0.6rem;
+    font-size: 0.9rem;
     color: var(--text-gray);
+    font-weight: 600;
 }
 
 .meta-item i {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
+    color: var(--event-color);
 }
 
 .event-reward {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    background: #F8FAFC;
-    padding: 1rem;
-    border-radius: 12px;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.25rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
 }
 
 .event-reward i {
-    color: var(--primary-indigo);
+    color: #FBBF24; /* Gold */
+    width: 24px;
+    height: 24px;
 }
 
 .reward-text {
@@ -1847,26 +1861,35 @@ body.dark-theme .talent-card {
     color: var(--text-dim);
     text-transform: uppercase;
     font-weight: 800;
+    letter-spacing: 1px;
 }
 
 .reward-value {
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 800;
     color: var(--text-dark);
 }
 
-.event-register-btn {
-    background: var(--bg-light);
-    color: var(--text-dark);
-    border: 1px solid var(--border);
-    transition: var(--transition);
-}
-
-.event-card:hover .event-register-btn {
+.btn-register-event {
+    width: 100%;
+    padding: 1.25rem;
     background: var(--event-color);
     color: white;
-    border-color: transparent;
-    box-shadow: 0 4px 15px color-mix(in srgb, var(--event-color) 30%, transparent);
+    border: none;
+    border-radius: 16px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: var(--transition-bounce);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--event-color) 30%, transparent);
+}
+
+.btn-register-event:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--event-color) 45%, transparent);
 }
 
 /* Settings View Styles */
