@@ -4,26 +4,20 @@
  */
 
 const LeaderboardEngine = {
-    // 1. COMPUTE COMPOSITE SCORE (0–1000 points)
+    // Ranking Criteria (weighted scoring)
     calculateScore: function(student) {
-        const scores = {
-            problem_solving: this.computeProblemSolving(student.problem_solving),
-            test_performance: this.computeTestPerformance(student.test_scores),
-            consistency: this.computeConsistency(student.consistency),
-            badges: this.computeBadgeScore(student.badges),
-            community: this.computeCommunityContribution(student.peer_interactions),
-            improvement: this.computeImprovementMomentum(student.improvement_rate)
-        };
-
-        // Weighted Total
+        const scores = student.scores;
+        
+        // Weights
         const total = (
-            (scores.problem_solving * 0.30) +
-            (scores.test_performance * 0.25) +
-            (scores.consistency * 0.20) +
-            (scores.badges * 0.10) +
-            (scores.community * 0.10) +
-            (scores.improvement * 0.05)
-        ) * 10; // Scaling to 0-1000
+            (scores.badges * 0.15) +
+            (scores.academic * 0.20) +
+            (scores.problem_solving * 0.25) +
+            (scores.hackathon * 0.15) +
+            (scores.participation * 0.10) +
+            (scores.streak * 0.05) +
+            (scores.collaboration * 0.10)
+        );
 
         return {
             composite_score: Math.round(total),
@@ -31,125 +25,95 @@ const LeaderboardEngine = {
         };
     },
 
-    computeProblemSolving: function(ps) {
-        // easy=1pt, medium=3pt, hard=7pt
-        const raw = (ps.difficulty_breakdown.easy * 1) + 
-                    (ps.difficulty_breakdown.medium * 3) + 
-                    (ps.difficulty_breakdown.hard * 7);
-        // Accuracy bonus (0-100 scale)
-        const accuracyBonus = ps.accuracy_rate / 100;
-        return Math.min(100, (raw / 2) * accuracyBonus); // Normalizing to 0-100
-    },
-
-    computeTestPerformance: function(tests) {
-        if (!tests.length) return 0;
-        const avg = tests.reduce((sum, t) => sum + (t.score / t.max_score), 0) / tests.length;
-        return avg * 100;
-    },
-
-    computeConsistency: function(c) {
-        const activeScore = (c.active_days_last_30 / 30) * 60;
-        const streakScore = Math.min(40, c.current_streak_days + (c.longest_streak_days / 5));
-        return Math.min(100, activeScore + streakScore);
-    },
-
-    computeBadgeScore: function(badges) {
-        let total = 0;
-        badges.forEach(b => {
-            const lower = b.toLowerCase();
-            if (lower.includes('platinum')) total += 50;
-            else if (lower.includes('gold')) total += 30;
-            else if (lower.includes('silver')) total += 15;
-            else if (lower.includes('bronze')) total += 5;
-        });
-        return Math.min(100, total);
-    },
-
-    computeCommunityContribution: function(p) {
-        const score = (p.solutions_upvoted / 10) + (p.discussions_started * 2) + (p.help_given_count * 1.5);
-        return Math.min(100, score);
-    },
-
-    computeImprovementMomentum: function(rate) {
-        return Math.min(100, rate * 5); // 20% improvement = 100 pts
-    },
-
-    // 2. ASSIGN RANK TIER
     getRank: function(score) {
-        if (score >= 900) return { tier: "Grandmaster", emoji: "🏆" };
-        if (score >= 750) return { tier: "Diamond", emoji: "💎" };
-        if (score >= 600) return { tier: "Platinum", emoji: "🥇" };
-        if (score >= 450) return { tier: "Gold", emoji: "🥈" };
-        if (score >= 300) return { tier: "Silver", emoji: "🥉" };
-        if (score >= 150) return { tier: "Bronze", emoji: "🔵" };
-        return { tier: "Unranked", emoji: "⚪" };
+        if (score >= 90) return { tier: "Legend", emoji: "🏆", color: "#FFD700" };
+        if (score >= 80) return { tier: "Diamond", emoji: "💎", color: "#B9F2FF" };
+        if (score >= 65) return { tier: "Gold", emoji: "🥇", color: "#FFC107" };
+        if (score >= 50) return { tier: "Silver", emoji: "🥈", color: "#C0C0C0" };
+        if (score >= 30) return { tier: "Bronze", emoji: "🥉", color: "#CD7F32" };
+        return { tier: "Unranked", emoji: "⚪", color: "#94A3B8" };
     },
 
-    // 3. COMPANY RECOMMENDATION
-    getCompanyScore: function(student, composite) {
-        const techStrength = (composite.breakdown.problem_solving + composite.breakdown.test_performance) / 2;
-        const reliability = composite.breakdown.consistency;
-        const softSkills = composite.breakdown.community;
-        const growth = composite.breakdown.improvement;
-
-        const score = Math.round((techStrength * 0.4) + (reliability * 0.3) + (softSkills * 0.2) + (growth * 0.1));
-        
-        let pitch = "";
-        if (score > 85) {
-            pitch = `${student.name} is a high-velocity engineer with exceptional problem-solving depth and a ${student.consistency.current_streak_days}-day consistency streak. Highly recommended for fast-paced technical roles requiring both skill and reliability.`;
-        } else {
-            pitch = `${student.name} shows strong technical fundamentals and a consistent learning habit. A reliable candidate with steady growth momentum and active community engagement.`;
-        }
-
-        return { score, recruiter_pitch: pitch };
-    },
-
-    // 4. IDENTIFY STRENGTHS & IMPROVEMENTS
-    analyzePerformance: function(student, breakdown) {
-        const strengths = [];
-        const improve = [];
-
-        // Analysis logic
-        if (student.problem_solving.accuracy_rate > 85) strengths.push(`High Technical Accuracy (${student.problem_solving.accuracy_rate}%)`);
-        if (student.consistency.current_streak_days > 10) strengths.push(`Strong Discipline (${student.consistency.current_streak_days}-day streak)`);
-        if (breakdown.community > 70) strengths.push("Exceptional Community Contributor");
-        
-        if (student.problem_solving.difficulty_breakdown.hard < 5) improve.push("Increase exposure to 'Hard' difficulty problems");
-        if (breakdown.test_performance < 80) improve.push("Target higher scores in subject-specific assessments");
-
-        return { strengths, improve };
-    },
-
-    // Wrapper function to process a student
-    processStudent: function(student) {
-        const { composite_score, breakdown } = this.calculateScore(student);
-        const rank = this.getRank(composite_score);
-        const companyRec = this.getCompanyScore(student, { composite_score, breakdown });
-        const analysis = this.analyzePerformance(student, breakdown);
-
-        return {
-            student_id: student.student_id,
-            composite_score: composite_score,
-            rank_tier: rank.tier,
-            rank_emoji: rank.emoji,
-            score_breakdown: {
-                problem_solving: Math.round(breakdown.problem_solving),
-                test_performance: Math.round(breakdown.test_performance),
-                consistency: Math.round(breakdown.consistency),
-                badges: Math.round(breakdown.badges),
-                community: Math.round(breakdown.community),
-                improvement: Math.round(breakdown.improvement)
-            },
-            leaderboard_position_estimate: composite_score > 800 ? "Top 1%" : (composite_score > 600 ? "Top 10%" : "Top 25%"),
-            company_recommendation: companyRec,
-            strengths: analysis.strengths,
-            improve: analysis.improve,
-            next_badge_suggestion: student.problem_solving.problems_solved > 100 ? "Platinum: Logic Wizard" : "Gold: Problem Solver"
-        };
+    // Process list for display
+    processLeaderboard: function(data) {
+        return data.map(s => {
+            const { composite_score } = this.calculateScore(s);
+            const rank = this.getRank(composite_score);
+            return {
+                ...s,
+                total: composite_score,
+                rank_tier: rank.tier,
+                rank_emoji: rank.emoji,
+                rank_color: rank.color,
+                rank_diff: s.previous_rank - (data.indexOf(s) + 1) // Mock diff logic
+            };
+        }).sort((a, b) => b.total - a.total);
     }
 };
 
-// Export for use
-if (typeof module !== 'undefined') {
-    module.exports = LeaderboardEngine;
+const studentsData = [
+    { id: "s1", name: "Alex Johnson", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex", scores: { badges: 85, academic: 92, problem_solving: 88, hackathon: 75, participation: 90, streak: 45, collaboration: 82 }, previous_rank: 2, tier: "Diamond" },
+    { id: "s2", name: "Priya Sharma", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya", scores: { badges: 95, academic: 88, problem_solving: 94, hackathon: 90, participation: 85, streak: 60, collaboration: 92 }, previous_rank: 1, tier: "Legend" },
+    { id: "s3", name: "Michael Chen", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael", scores: { badges: 70, academic: 95, problem_solving: 82, hackathon: 60, participation: 75, streak: 30, collaboration: 65 }, previous_rank: 5, tier: "Gold" },
+    { id: "s14", name: "Mia Hernandez", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mia", scores: { badges: 92, academic: 88, problem_solving: 96, hackathon: 92, participation: 90, streak: 65, collaboration: 98 }, previous_rank: 14, tier: "Legend" },
+    { id: "s10", name: "Sophia Martinez", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sophia", scores: { badges: 88, academic: 94, problem_solving: 90, hackathon: 88, participation: 95, streak: 50, collaboration: 95 }, previous_rank: 7, tier: "Diamond" }
+    // ... truncated for brevity in UI, but engine handles all
+];
+
+function renderLeaderboardView() {
+    const grid = document.getElementById('leaderboard-grid');
+    if (!grid) return;
+
+    const processed = LeaderboardEngine.processLeaderboard(studentsData);
+    
+    grid.innerHTML = `
+        <div class="table-wrapper">
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Student</th>
+                        <th>Tier</th>
+                        <th>Overall</th>
+                        <th>Breakdown</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${processed.map((s, i) => `
+                        <tr>
+                            <td>
+                                <div class="rank-cell">
+                                    <span class="rank-number">${i + 1}</span>
+                                    <span class="rank-indicator ${s.rank_diff >= 0 ? 'up' : 'down'}">
+                                        <i data-lucide="${s.rank_diff >= 0 ? 'arrow-up' : 'arrow-down'}"></i>
+                                        ${Math.abs(s.rank_diff)}
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="student-info">
+                                    <img src="${s.avatar}" alt="">
+                                    <span>${s.name}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="tier-badge" style="background: ${s.rank_color}20; color: ${s.rank_color}; border: 1px solid ${s.rank_color}40">
+                                    ${s.rank_tier}
+                                </span>
+                            </td>
+                            <td><strong style="font-size: 1.2rem; color: var(--primary-blue)">${s.total}</strong></td>
+                            <td>
+                                <div class="score-mini-grid">
+                                    <span title="Logic"><i data-lucide="brain"></i> ${s.scores.problem_solving}</span>
+                                    <span title="Academic"><i data-lucide="award"></i> ${s.scores.academic}</span>
+                                    <span title="Consistency"><i data-lucide="zap"></i> ${s.scores.streak}</span>
+                                </div>
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+    lucide.createIcons();
 }

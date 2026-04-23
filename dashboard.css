@@ -743,6 +743,89 @@ body {
     background: rgba(76, 175, 80, 0.2);
 }
 
+/* Leaderboard View Styles */
+.leaderboard-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.leaderboard-table th {
+    text-align: left;
+    padding: 1rem;
+    color: var(--text-gray);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.leaderboard-table tr td {
+    background: var(--white);
+    padding: 1.25rem 1rem;
+}
+
+.leaderboard-table tr td:first-child { border-radius: 12px 0 0 12px; }
+.leaderboard-table tr td:last-child { border-radius: 0 12px 12px 0; }
+
+.rank-cell {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rank-number {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+}
+
+.rank-indicator {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.rank-indicator.up { color: #10B981; background: #ECFDF5; }
+.rank-indicator.down { color: #EF4444; background: #FEF2F2; }
+
+.student-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.leaderboard-table .student-info img {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.tier-badge {
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.score-mini-grid {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.score-mini-grid span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+}
+
 /* View Switching */
 .dashboard-view {
     display: none;
@@ -761,10 +844,98 @@ body {
     margin-top: 2rem;
 }
 
-.section-subtitle {
+/* Badges View Styles */
+.badges-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.badge-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.badge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.badge-icon-wrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.badge-ribbon {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 60px;
+    background: #E2E8F0;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+    z-index: 1;
+}
+
+.badge-card.gold .badge-ribbon { background: linear-gradient(to bottom, #FFD700, #B8860B); }
+.badge-card.silver .badge-ribbon { background: linear-gradient(to bottom, #C0C0C0, #808080); }
+.badge-card.bronze .badge-ribbon { background: linear-gradient(to bottom, #CD7F32, #8B4513); }
+
+.badge-tier {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    background: #F1F5F9;
     color: var(--text-gray);
-    font-size: 0.9rem;
-    margin-top: -1rem;
+}
+
+.badge-course {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.badge-date {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    margin-bottom: 1rem;
+}
+
+.badge-desc {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+.stats-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #F0F9FF;
+    color: var(--primary-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
 }
 
 /* Empty State */

@@ -356,10 +356,20 @@ function init() {
 }
 
 // Navigation Logic
+const navHome = document.getElementById('nav-home');
+const navMyCourses = document.getElementById('nav-my-courses');
+const navExplore = document.getElementById('nav-explore');
 const navCommunity = document.getElementById('nav-community');
 const navProfile = document.getElementById('nav-profile');
+const navLeaderboard = document.getElementById('nav-leaderboard');
+const navBadges = document.getElementById('nav-badges');
+
+const viewHome = document.getElementById('view-home');
+const viewMyCourses = document.getElementById('view-my-courses');
 const viewCommunity = document.getElementById('view-community');
 const viewProfile = document.getElementById('view-profile');
+const viewLeaderboard = document.getElementById('view-leaderboard');
+const viewBadges = document.getElementById('view-badges');
 
 function setupNavigation() {
     navHome.onclick = (e) => {
@@ -389,6 +399,18 @@ function setupNavigation() {
             switchView('profile');
         };
     }
+    if (navLeaderboard) {
+        navLeaderboard.onclick = (e) => {
+            e.preventDefault();
+            switchView('leaderboard');
+        };
+    }
+    if (navBadges) {
+        navBadges.onclick = (e) => {
+            e.preventDefault();
+            switchView('badges');
+        };
+    }
 }
 
 function switchView(viewId) {
@@ -398,6 +420,8 @@ function switchView(viewId) {
     if (viewId === 'my-courses') navMyCourses.classList.add('active');
     if (viewId === 'community' && navCommunity) navCommunity.classList.add('active');
     if (viewId === 'profile' && navProfile) navProfile.classList.add('active');
+    if (viewId === 'leaderboard' && navLeaderboard) navLeaderboard.classList.add('active');
+    if (viewId === 'badges' && navBadges) navBadges.classList.add('active');
 
     // Update Views
     document.querySelectorAll('.dashboard-view').forEach(view => view.classList.remove('active'));
@@ -413,6 +437,14 @@ function switchView(viewId) {
     if (viewId === 'profile' && viewProfile) {
         viewProfile.classList.add('active');
         if (typeof renderProfileUploads === 'function') renderProfileUploads();
+    }
+    if (viewId === 'leaderboard' && viewLeaderboard) {
+        viewLeaderboard.classList.add('active');
+        if (typeof renderLeaderboardView === 'function') renderLeaderboardView();
+    }
+    if (viewId === 'badges' && viewBadges) {
+        viewBadges.classList.add('active');
+        if (typeof renderBadgesView === 'function') renderBadgesView();
     }
 }
 

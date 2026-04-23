@@ -89,9 +89,9 @@
                 </a>
                 <a href="#" class="menu-item"><i data-lucide="repeat"></i> <span>Skill Swap</span></a>
                 <a href="#" class="menu-item"><i data-lucide="calendar"></i> <span>Events & Hackathons</span></a>
-                <a href="#" class="menu-item"><i data-lucide="trophy"></i> <span>Leaderboard</span></a>
+                <a href="#" class="menu-item" id="nav-leaderboard"><i data-lucide="trophy"></i> <span>Leaderboard</span></a>
                 <a href="#" class="menu-item" id="nav-publish-sidebar"><i data-lucide="plus-circle"></i> <span>Publish Content</span></a>
-                <a href="#" class="menu-item"><i data-lucide="award"></i> <span>Badges Earned</span></a>
+                <a href="#" class="menu-item" id="nav-badges"><i data-lucide="award"></i> <span>Badges Earned</span></a>
                 <a href="#" class="menu-item" id="nav-community"><i data-lucide="users"></i> <span>Community Hub</span></a>
                 <a href="#" class="menu-item" id="nav-profile"><i data-lucide="user"></i> <span>My Profile</span></a>
                 <a href="#" class="menu-item"><i data-lucide="settings"></i> <span>Settings</span></a>
@@ -474,6 +474,34 @@
                     </div>
                 </div>
             </div>
+            <!-- Leaderboard View -->
+            <div id="view-leaderboard" class="dashboard-view">
+                <div class="section-header">
+                    <div>
+                        <h2>Global Leaderboard</h2>
+                        <p class="section-subtitle">Top performers across the TALEX network</p>
+                    </div>
+                </div>
+                <div id="leaderboard-grid">
+                    <!-- Leaderboard table will be rendered here -->
+                </div>
+            </div>
+            <!-- Badges View -->
+            <div id="view-badges" class="dashboard-view">
+                <div class="section-header">
+                    <div>
+                        <h2>Badges Earned</h2>
+                        <p class="section-subtitle">Your academic and skill achievements</p>
+                    </div>
+                    <div class="stats-pill">
+                        <i data-lucide="award"></i>
+                        <span>Total Badges: 4</span>
+                    </div>
+                </div>
+                <div id="badges-grid">
+                    <!-- Badges will be rendered here -->
+                </div>
+            </div>
         </main>
     </div>
 
@@ -596,6 +624,7 @@
     <script src="courses.js"></script>
     <script src="cms.js"></script>
     <script src="leaderboard.js"></script>
+    <script src="badges.js"></script>
     <script>
         lucide.createIcons();
 
