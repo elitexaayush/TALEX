@@ -88,6 +88,7 @@
                     <span>Explore Courses</span>
                 </a>
                 <a href="#" class="menu-item"><i data-lucide="repeat"></i> <span>Skill Swap</span></a>
+                <a href="#" class="menu-item" id="nav-jobs"><i data-lucide="briefcase"></i> <span>Jobs & Internships</span></a>
                 <a href="#" class="menu-item" id="nav-events"><i data-lucide="calendar"></i> <span>Events & Hackathons</span></a>
                 <a href="#" class="menu-item" id="nav-leaderboard"><i data-lucide="trophy"></i> <span>Leaderboard</span></a>
                 <a href="#" class="menu-item" id="nav-publish-sidebar"><i data-lucide="plus-circle"></i> <span>Publish Content</span></a>
@@ -628,6 +629,29 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Jobs & Internships View -->
+            <div id="view-jobs" class="dashboard-view">
+                <div class="section-header">
+                    <div>
+                        <h2>Jobs & Internships</h2>
+                        <p class="section-subtitle">Find your next big opportunity. Apply directly using your TALEX profile and earned Badges.</p>
+                    </div>
+                </div>
+                
+                <div class="filter-bar" style="margin-top: 1rem; margin-bottom: 2rem;">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active">All Roles</button>
+                        <button class="filter-btn">Internships</button>
+                        <button class="filter-btn">Full-time</button>
+                        <button class="filter-btn">Contract</button>
+                    </div>
+                </div>
+
+                <div id="jobs-grid" class="jobs-grid-container">
+                    <!-- Job cards will be rendered here -->
+                </div>
+            </div>
         </main>
     </div>
 
@@ -752,6 +776,7 @@
     <script src="leaderboard.js"></script>
     <script src="badges.js"></script>
     <script src="events.js"></script>
+    <script src="jobs.js"></script>
     <script>
         lucide.createIcons();
 

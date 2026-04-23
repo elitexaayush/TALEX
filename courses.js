@@ -362,6 +362,7 @@ const navLeaderboard = document.getElementById('nav-leaderboard');
 const navBadges = document.getElementById('nav-badges');
 const navEvents = document.getElementById('nav-events');
 const navSettings = document.getElementById('nav-settings');
+const navJobs = document.getElementById('nav-jobs');
 
 const viewCommunity = document.getElementById('view-community');
 const viewProfile = document.getElementById('view-profile');
@@ -369,6 +370,7 @@ const viewLeaderboard = document.getElementById('view-leaderboard');
 const viewBadges = document.getElementById('view-badges');
 const viewEvents = document.getElementById('view-events');
 const viewSettings = document.getElementById('view-settings');
+const viewJobs = document.getElementById('view-jobs');
 
 function setupNavigation() {
     navHome.onclick = (e) => {
@@ -422,6 +424,12 @@ function setupNavigation() {
             switchView('settings');
         };
     }
+    if (navJobs) {
+        navJobs.onclick = (e) => {
+            e.preventDefault();
+            switchView('jobs');
+        };
+    }
 
     // Settings Inner Tabs Logic
     const settingsTabs = document.querySelectorAll('.settings-tab');
@@ -448,6 +456,7 @@ function switchView(viewId) {
     if (viewId === 'badges' && navBadges) navBadges.classList.add('active');
     if (viewId === 'events' && navEvents) navEvents.classList.add('active');
     if (viewId === 'settings' && navSettings) navSettings.classList.add('active');
+    if (viewId === 'jobs' && navJobs) navJobs.classList.add('active');
 
     // Update Views
     document.querySelectorAll('.dashboard-view').forEach(view => view.classList.remove('active'));
@@ -478,6 +487,10 @@ function switchView(viewId) {
     }
     if (viewId === 'settings' && viewSettings) {
         viewSettings.classList.add('active');
+    }
+    if (viewId === 'jobs' && viewJobs) {
+        viewJobs.classList.add('active');
+        if (typeof renderJobsView === 'function') renderJobsView();
     }
 }
 
