@@ -1,48 +1,52 @@
 :root {
-    /* Modern Education Theme */
-    --primary-indigo: #4F46E5;
-    --primary-sky: #0EA5E9;
-    --primary-emerald: #10B981;
-    --primary-rose: #F43F5E;
-    --bg-light: #F8FAFC;
-    --bg-card: #FFFFFF;
-    --text-dark: #0F172A;
+    /* Relaxing Soft Theme (Little Dark, Little Light) */
+    --primary-indigo: #8B5CF6; /* Soft Violet */
+    --primary-sky: #38BDF8; /* Gentle Sky */
+    --primary-emerald: #34D399; /* Soft Mint */
+    --primary-rose: #FB7185; /* Soft Rose */
+    
+    --bg-light: #EEF2F6; /* Soft cool dim gray */
+    --bg-card: #F8FAFC; /* Gentle off-white for cards */
+    
+    --text-dark: #334155; /* Muted slate, easy on the eyes */
     --text-gray: #64748B;
     --text-dim: #94A3B8;
-    --white: #ffffff;
+    
+    --white: #F8FAFC;
     --border: #E2E8F0;
     
-    /* Dynamic Gradients */
-    --gradient-primary: linear-gradient(135deg, var(--primary-indigo), var(--primary-sky));
-    --gradient-success: linear-gradient(135deg, var(--primary-emerald), #059669);
-    --gradient-blue: linear-gradient(135deg, var(--primary-sky), #3B82F6);
+    /* Dynamic Gradients - Softer */
+    --gradient-primary: linear-gradient(135deg, var(--primary-indigo), #A78BFA);
+    --gradient-success: linear-gradient(135deg, var(--primary-emerald), #10B981);
+    --gradient-blue: linear-gradient(135deg, var(--primary-sky), #60A5FA);
     
     /* Soft Shadows */
-    --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.05);
-    --shadow-md: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
-    --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
-    --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.3);
+    --shadow-sm: 0 2px 8px rgba(51, 65, 85, 0.05);
+    --shadow-md: 0 10px 20px -3px rgba(51, 65, 85, 0.08), 0 4px 6px -2px rgba(51, 65, 85, 0.04);
+    --shadow-lg: 0 20px 30px -5px rgba(51, 65, 85, 0.1), 0 10px 10px -5px rgba(51, 65, 85, 0.04);
+    --shadow-glow: 0 0 25px rgba(139, 92, 246, 0.2);
     
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 body.dark-theme {
-    --bg-light: #0F172A;
-    --bg-card: #1E293B;
-    --text-dark: #F8FAFC;
-    --text-gray: #94A3B8;
-    --text-dim: #64748B;
-    --white: #1E293B;
+    /* Relaxing Dark Mode (Not too dark, very soft) */
+    --bg-light: #1E293B; /* Soft slate dark */
+    --bg-card: #273548; /* Slightly lighter slate for cards */
+    --text-dark: #F1F5F9; /* Off-white text */
+    --text-gray: #CBD5E1;
+    --text-dim: #94A3B8;
+    --white: #273548;
     --border: #334155;
     
     /* Dark Mode specific shadow adjustments */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 10px 20px -3px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 25px 35px -5px rgba(0, 0, 0, 0.4);
     
     /* Adjust specific UI elements for dark mode contrast */
-    --primary-indigo: #6366F1;
+    --primary-indigo: #A78BFA; /* Softer violet for dark mode */
 }
 
 * {

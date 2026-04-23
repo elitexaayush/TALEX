@@ -1,23 +1,36 @@
 :root {
-    /* Modern Education Theme */
-    --primary-indigo: #4F46E5;
-    --primary-sky: #0EA5E9;
-    --primary-emerald: #10B981;
-    --primary-rose: #F43F5E;
-    --bg-white: #F8FAFC;
-    --bg-card: #FFFFFF;
-    --text-dark: #0F172A;
+    /* Relaxing Soft Theme (Little Dark, Little Light) */
+    --primary-indigo: #8B5CF6; /* Soft Violet */
+    --primary-sky: #38BDF8; /* Gentle Sky */
+    --primary-emerald: #34D399; /* Soft Mint */
+    --primary-rose: #FB7185; /* Soft Rose */
+    
+    --bg-light: #EEF2F6; /* Soft cool dim gray */
+    --bg-card: #F8FAFC; /* Gentle off-white for cards */
+    --bg-card-alpha: rgba(248, 250, 252, 0.85); /* Slightly translucent */
+    
+    --text-dark: #334155; /* Muted slate, easy on the eyes */
     --text-gray: #64748B;
+    --text-dim: #94A3B8;
     
-    /* Dynamic Gradients */
-    --gradient-primary: linear-gradient(135deg, var(--primary-indigo), var(--primary-sky));
-    --gradient-green: linear-gradient(135deg, var(--primary-emerald), #059669);
-    --gradient-blue: linear-gradient(135deg, var(--primary-sky), #3B82F6);
+    --white: #F8FAFC;
+    --bg-white: #EEF2F6; /* Fallback for background */
+    --border: #E2E8F0;
     
-    --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -1px rgba(15, 23, 42, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -2px rgba(15, 23, 42, 0.05);
+    /* Dynamic Gradients - Softer */
+    --gradient-primary: linear-gradient(135deg, var(--primary-indigo), #A78BFA);
+    --gradient-success: linear-gradient(135deg, var(--primary-emerald), #10B981);
+    --gradient-blue: linear-gradient(135deg, var(--primary-sky), #60A5FA);
+    --gradient-card: linear-gradient(135deg, rgba(248, 250, 252, 0.9), rgba(255, 255, 255, 0.9));
+    
+    /* Soft Shadows */
+    --shadow-sm: 0 2px 8px rgba(51, 65, 85, 0.05);
+    --shadow-md: 0 10px 20px -3px rgba(51, 65, 85, 0.08), 0 4px 6px -2px rgba(51, 65, 85, 0.04);
+    --shadow-lg: 0 20px 30px -5px rgba(51, 65, 85, 0.1), 0 10px 10px -5px rgba(51, 65, 85, 0.04);
+    --shadow-glow: 0 0 25px rgba(139, 92, 246, 0.2);
+    
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 * {
