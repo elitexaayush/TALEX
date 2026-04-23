@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALEX | Learn, Earn, Get Hired</title>
+    <meta name="description" content="TALEX is the #1 platform to swap skills, grow your career, and get hired. Join our community of 50K+ learners today.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="talexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#8BC34A" />
+                                <stop offset="100%" style="stop-color:#42A5F5" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Stylized Human Figure (X-shape) -->
+                        <path d="M100 110C100 110 85 140 75 160C70 170 80 180 90 175C100 170 110 150 110 150L130 175C140 185 155 175 150 160C140 140 120 120 120 120L150 80C160 70 145 60 135 70L110 100L95 40C90 30 75 35 80 45C85 55 100 110 100 110Z" fill="url(#talexGrad)" />
+                        <!-- Head -->
+                        <circle cx="115" cy="85" r="12" fill="url(#talexGrad)" />
+                        <!-- Graduation Cap -->
+                        <path d="M105 80L115 75L125 80L115 85L105 80Z" fill="#2C3E50" />
+                        <path d="M125 80V84" stroke="#2C3E50" stroke-width="1" />
+                        <!-- Star & Halo -->
+                        <ellipse cx="85" cy="40" rx="25" ry="8" stroke="url(#talexGrad)" stroke-width="3" transform="rotate(-15 85 40)" />
+                        <path d="M85 30L87 36H93L88 40L90 46L85 42L80 46L82 40L77 36H83L85 30Z" fill="#D4E157">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />
+                        </path>
+                    </svg>
+                    <span>TALEX</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#features">Features</a>
+                    <a href="#community">Community</a>
+                    <a href="#contact">Contact</a>
+                    <a href="auth.html" class="btn btn-primary">Get Started</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="tagline-top">LEARN, EARN, GET HIRED</span>
+                    <h1>The #1 platform to <span class="gradient-text">swap skills</span> and grow.</h1>
+                    <p>The #1 platform to swap skills, grow your career, and get hired. Exchange knowledge, monetize your expertise, and connect with top employers.</p>
+                    <a href="auth.html" class="btn btn-primary">Get Started Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h2 class="gradient-text">What is TALEX?</h2>
+                        <p>TALEX is a revolutionary skill-swap education platform designed for the modern world. We believe everyone has something to teach and something to learn.</p>
+                        <p>On TALEX, learners teach what they know, learn what they need, earn while growing, and connect directly with top employers seeking verified skills.</p>
+                        <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Explore More</a>
+                    </div>
+                    <div class="about-graphic">
+                        <div class="graphic-container">
+                            <!-- Hero Image/Graphic will go here -->
+                             <svg viewBox="0 0 400 400" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="200" cy="200" r="150" fill="white" fill-opacity="0.1" />
+                                <path d="M150 250L200 150L250 250" stroke="white" stroke-width="12" stroke-linecap="round" />
+                                <circle cx="200" cy="120" r="30" fill="white" />
+                                <path d="M180 100L200 80L220 100L200 120L180 100Z" fill="#FFD700" />
+                                <circle cx="200" cy="200" r="100" stroke="white" stroke-width="2" stroke-dasharray="10 10" opacity="0.5">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="20s" repeatCount="indefinite" />
+                                </circle>
+                             </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                    <h2 class="gradient-text" style="font-size: 2.5rem; margin-bottom: 1rem;">Empowering Your Growth</h2>
+                    <p style="color: var(--text-gray);">Discover the features that make TALEX the leading platform for peer-to-peer education and career advancement.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="icon-wrapper"><i data-lucide="repeat"></i></div>
+                        <h3>Skill Swap</h3>
+                        <p>Exchange skills peer-to-peer with our global community. Teach what you love, learn what you need.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-wrapper"><i data-lucide="dollar-sign"></i></div>
+                        <h3>Earn While Learning</h3>
+                        <p>Monetize your expertise by sharing it with others. Build your portfolio and earn as you grow.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-wrapper"><i data-lucide="briefcase"></i></div>
+                        <h3>Career Matching</h3>
+                        <p>Get matched with hiring companies based on your verified skills and community contributions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-wrapper"><i data-lucide="video"></i></div>
+                        <h3>Live Workshops</h3>
+                        <p>Join real-time expert sessions and interactive workshops to accelerate your learning journey.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-wrapper"><i data-lucide="users"></i></div>
+                        <h3>Community Hub</h3>
+                        <p>Connect with a global network of learners and mentors. Collaborate on projects and share insights.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-wrapper"><i data-lucide="award"></i></div>
+                        <h3>Certifications</h3>
+                        <p>Earn verified credentials that showcase your expertise to potential employers and the community.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="community">
+            <div class="community-banner">
+                <div class="container">
+                    <h2>Join Our Growing Community</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h4>50K+</h4>
+                            <p>Learners</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>10K+</h4>
+                            <p>Skills Listed</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>5K+</h4>
+                            <p>Hired</p>
+                        </div>
+                    </div>
+                    <a href="auth.html" class="btn btn-white btn-lg">Join the Community</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                    <a href="#" class="logo">
+                        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 48px; height: 48px;">
+                            <defs>
+                                <linearGradient id="talexGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#8BC34A" />
+                                    <stop offset="100%" style="stop-color:#42A5F5" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M100 110C100 110 85 140 75 160C70 170 80 180 90 175C100 170 110 150 110 150L130 175C140 185 155 175 150 160C140 140 120 120 120 120L150 80C160 70 145 60 135 70L110 100L95 40C90 30 75 35 80 45C85 55 100 110 100 110Z" fill="url(#talexGradFooter)" />
+                            <circle cx="115" cy="85" r="12" fill="url(#talexGradFooter)" />
+                            <path d="M105 80L115 75L125 80L115 85L105 80Z" fill="#2C3E50" />
+                            <ellipse cx="85" cy="40" rx="25" ry="8" stroke="url(#talexGradFooter)" stroke-width="3" transform="rotate(-15 85 40)" />
+                            <path d="M85 30L87 36H93L88 40L90 46L85 42L80 46L82 40L77 36H83L85 30Z" fill="#D4E157" />
+                        </svg>
+                        <span>TALEX</span>
+                    </a>
+                    <p>The #1 platform to swap skills, grow your career, and get hired.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#community">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+                        <a href="#" class="social-link"><i data-lucide="facebook"></i></a>
+                        <a href="#" class="social-link"><i data-lucide="linkedin"></i></a>
+                        <a href="#" class="social-link"><i data-lucide="instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TALEX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
