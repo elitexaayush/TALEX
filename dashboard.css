@@ -228,6 +228,127 @@ body {
     color: var(--primary-green);
 }
 
+/* Notifications Dropdown */
+.notification-dropdown {
+    position: relative;
+}
+
+.notif-content {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: -50px;
+    width: 320px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition-bounce);
+    z-index: 1000;
+}
+
+.notif-content.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.notif-header h4 {
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.notif-header a {
+    font-size: 0.8rem;
+    color: var(--primary-sky);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.notif-list {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.notif-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.notif-item:hover {
+    background: var(--bg-light);
+}
+
+.notif-item.unread {
+    background: rgba(14, 165, 233, 0.05);
+}
+
+.notif-item.unread:hover {
+    background: rgba(14, 165, 233, 0.1);
+}
+
+.notif-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.notif-icon.credit { background: rgba(52, 211, 153, 0.15); color: var(--primary-emerald); }
+.notif-icon.rank { background: rgba(139, 92, 246, 0.15); color: var(--primary-indigo); }
+.notif-icon.event { background: rgba(244, 63, 94, 0.15); color: var(--primary-rose); }
+
+.notif-text {
+    flex: 1;
+}
+
+.notif-text p {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+.notif-text span {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+}
+
+.notif-footer {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+.notif-footer a {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.notif-footer a:hover {
+    color: var(--text-dark);
+}
+
 /* Sidebar Menu */
 .side-menu {
     padding: 1.5rem 1rem;

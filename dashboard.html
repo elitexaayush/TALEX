@@ -52,10 +52,24 @@
                 <i data-lucide="wallet"></i>
                 <span>Credits: <strong id="wallet-balance">500</strong> CP</span>
             </div>
-            <button class="icon-btn">
-                <i data-lucide="bell"></i>
-                <span class="badge"></span>
-            </button>
+            <div class="notification-dropdown">
+                <button class="icon-btn" id="bell-btn" onclick="toggleNotifications()">
+                    <i data-lucide="bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="notif-content" id="notif-dropdown">
+                    <div class="notif-header">
+                        <h4>Notifications</h4>
+                        <a href="#" onclick="markAllRead(event)">Mark all as read</a>
+                    </div>
+                    <div class="notif-list" id="notif-list">
+                        <!-- Notifications injected via JS -->
+                    </div>
+                    <div class="notif-footer">
+                        <a href="#" onclick="switchView('settings'); setTimeout(() => document.querySelector('.settings-tab[data-tab=\'notifications\']').click(), 100);">View Notification Settings</a>
+                    </div>
+                </div>
+            </div>
             <button class="icon-btn">
                 <i data-lucide="message-square"></i>
             </button>

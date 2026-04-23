@@ -792,7 +792,9 @@ function finalizeEnrollment(course) {
     // If modal is open, update it
     if (modal.classList.contains('active')) {
         document.getElementById('modal-enroll-btn').innerHTML = 'Go to Course <i data-lucide="arrow-right"></i>';
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
     }
 
     // Success Toast
@@ -852,6 +854,124 @@ function showToast(message, type) {
     
     lucide.createIcons();
 }
+
+// Notifications System
+const mockNotifications = [
+    {
+        id: 'n1',
+        type: 'rank',
+        icon: 'trending-up',
+        text: '<strong>Congratulations!</strong> You have been promoted to the <strong>Diamond Tier</strong> on the Leaderboard!',
+        time: 'Just now',
+        unread: true
+    },
+    {
+        id: 'n2',
+        type: 'credit',
+        icon: 'wallet',
+        text: '<strong>-50 CP</strong> used to unlock the advanced "React System Design" module.',
+        time: '2 hours ago',
+        unread: true
+    },
+    {
+        id: 'n3',
+        type: 'event',
+        icon: 'calendar',
+        text: 'Reminder: The "Global UI/UX Hackathon" starts in exactly 24 hours.',
+        time: '1 day ago',
+        unread: true
+    },
+    {
+        id: 'n4',
+        type: 'credit',
+        icon: 'award',
+        text: '<strong>+100 CP</strong> earned for completing the Frontend Architecture path!',
+        time: '3 days ago',
+        unread: false
+    }
+];
+
+function renderNotifications() {
+    const list = document.getElementById('notif-list');
+    if (!list) return;
+
+    if (mockNotifications.length === 0) {
+        list.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--text-dim);">No new notifications</div>';
+        return;
+    }
+
+    list.innerHTML = mockNotifications.map(n => `
+        <div class="notif-item ${n.unread ? 'unread' : ''}" onclick="readNotification('${n.id}', this)">
+            <div class="notif-icon ${n.type}">
+                <i data-lucide="${n.icon}"></i>
+            </div>
+            <div class="notif-text">
+                <p>${n.text}</p>
+                <span>${n.time}</span>
+            </div>
+        </div>
+    `).join('');
+
+    updateNotificationBadge();
+    
+    if (window.lucide) {
+        window.lucide.createIcons();
+    }
+}
+
+function updateNotificationBadge() {
+    const badge = document.querySelector('#bell-btn .badge');
+    if (!badge) return;
+    
+    const unreadCount = mockNotifications.filter(n => n.unread).length;
+    if (unreadCount > 0) {
+        badge.textContent = unreadCount;
+        badge.style.display = 'flex';
+    } else {
+        badge.style.display = 'none';
+    }
+}
+
+function toggleNotifications() {
+    const dropdown = document.getElementById('notif-dropdown');
+    if (dropdown) {
+        dropdown.classList.toggle('show');
+        if (dropdown.classList.contains('show')) {
+            renderNotifications();
+        }
+    }
+}
+
+function readNotification(id, el) {
+    const notif = mockNotifications.find(n => n.id === id);
+    if (notif && notif.unread) {
+        notif.unread = false;
+        el.classList.remove('unread');
+        updateNotificationBadge();
+    }
+}
+
+function markAllRead(e) {
+    e.preventDefault();
+    mockNotifications.forEach(n => n.unread = false);
+    renderNotifications();
+}
+
+// Close notification dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    const notifDropdown = document.getElementById('notif-dropdown');
+    const bellBtn = document.getElementById('bell-btn');
+    if (notifDropdown && notifDropdown.classList.contains('show')) {
+        if (!notifDropdown.contains(e.target) && !bellBtn.contains(e.target)) {
+            notifDropdown.classList.remove('show');
+        }
+    }
+});
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    updateNotificationBadge();
+});
 
 // Start App
 init();
