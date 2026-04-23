@@ -552,6 +552,51 @@ function setupEventListeners() {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.remove('active');
     });
+
+    // Settings Functionality
+    const saveProfileBtn = document.getElementById('save-profile-btn');
+    if (saveProfileBtn) {
+        saveProfileBtn.addEventListener('click', () => {
+            showToast('Profile settings saved successfully!', 'success');
+        });
+    }
+
+    const updatePwdBtn = document.getElementById('update-password-btn');
+    if (updatePwdBtn) {
+        updatePwdBtn.addEventListener('click', () => {
+            showToast('Password updated securely!', 'success');
+        });
+    }
+
+    // Theme Toggle Logic
+    const themeLight = document.getElementById('theme-light');
+    const themeDark = document.getElementById('theme-dark');
+    
+    if (themeLight && themeDark) {
+        themeLight.addEventListener('click', () => {
+            document.body.classList.remove('dark-theme');
+            themeLight.classList.add('active');
+            themeDark.classList.remove('active');
+            localStorage.setItem('talex-theme', 'light');
+            showToast('Light theme applied.', 'success');
+        });
+
+        themeDark.addEventListener('click', () => {
+            document.body.classList.add('dark-theme');
+            themeDark.classList.add('active');
+            themeLight.classList.remove('active');
+            localStorage.setItem('talex-theme', 'dark');
+            showToast('Dark theme applied.', 'success');
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('talex-theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeDark.classList.add('active');
+            themeLight.classList.remove('active');
+        }
+    }
 }
 
 // Render Functions

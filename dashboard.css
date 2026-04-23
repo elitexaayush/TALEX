@@ -27,6 +27,24 @@
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+body.dark-theme {
+    --bg-light: #0F172A;
+    --bg-card: #1E293B;
+    --text-dark: #F8FAFC;
+    --text-gray: #94A3B8;
+    --text-dim: #64748B;
+    --white: #1E293B;
+    --border: #334155;
+    
+    /* Dark Mode specific shadow adjustments */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    
+    /* Adjust specific UI elements for dark mode contrast */
+    --primary-indigo: #6366F1;
+}
+
 * {
     margin: 0;
     padding: 0;

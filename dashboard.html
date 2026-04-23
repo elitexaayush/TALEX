@@ -558,7 +558,7 @@
                                     <label>Bio</label>
                                     <textarea class="form-input" rows="3">Passionate frontend developer exploring the intersection of UI/UX and engineering.</textarea>
                                 </div>
-                                <button class="btn btn-primary">Save Changes</button>
+                                <button class="btn btn-primary" id="save-profile-btn">Save Changes</button>
                             </div>
                         </div>
 
@@ -602,7 +602,7 @@
                                     <label>New Password</label>
                                     <input type="password" class="form-input" placeholder="••••••••">
                                 </div>
-                                <button class="btn btn-primary">Update Password</button>
+                                <button class="btn btn-primary" id="update-password-btn">Update Password</button>
                             </div>
                             <div class="danger-zone" style="margin-top: 3rem;">
                                 <h3>Danger Zone</h3>
@@ -615,11 +615,11 @@
                         <div class="settings-panel" id="setting-appearance" style="display: none;">
                             <h3>Theme & Appearance</h3>
                             <div class="theme-options">
-                                <div class="theme-card active">
+                                <div class="theme-card active" id="theme-light">
                                     <div class="theme-preview light"></div>
                                     <span>Light Mode</span>
                                 </div>
-                                <div class="theme-card">
+                                <div class="theme-card" id="theme-dark">
                                     <div class="theme-preview dark"></div>
                                     <span>Dark Mode</span>
                                 </div>
