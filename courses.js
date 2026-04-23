@@ -356,16 +356,11 @@ function init() {
 }
 
 // Navigation Logic
-const navHome = document.getElementById('nav-home');
-const navMyCourses = document.getElementById('nav-my-courses');
-const navExplore = document.getElementById('nav-explore');
 const navCommunity = document.getElementById('nav-community');
 const navProfile = document.getElementById('nav-profile');
 const navLeaderboard = document.getElementById('nav-leaderboard');
 const navBadges = document.getElementById('nav-badges');
 
-const viewHome = document.getElementById('view-home');
-const viewMyCourses = document.getElementById('view-my-courses');
 const viewCommunity = document.getElementById('view-community');
 const viewProfile = document.getElementById('view-profile');
 const viewLeaderboard = document.getElementById('view-leaderboard');
