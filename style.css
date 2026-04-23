@@ -48,6 +48,7 @@ body {
     background-color: var(--bg-white);
     color: var(--text-dark);
     line-height: 1.5;
+    font-weight: 600;
     overflow-x: hidden;
     position: relative;
 }
@@ -164,7 +165,7 @@ section, .hero, .about, .features, .community {
 
 /* Typography */
 h1, h2, h3, h4 {
-    font-weight: 800;
+    font-weight: 900;
     line-height: 1.2;
 }
 
@@ -259,7 +260,7 @@ nav {
 .tagline-top {
     text-transform: uppercase;
     letter-spacing: 6px;
-    font-weight: 700;
+    font-weight: 800;
     color: #4CAF50;
     margin-bottom: 1.5rem;
     display: block;
@@ -282,7 +283,7 @@ nav {
     display: inline-block;
     padding: 1rem 2.5rem;
     border-radius: 50px;
-    font-weight: 700;
+    font-weight: 800;
     text-decoration: none;
     transition: var(--transition);
     cursor: pointer;
