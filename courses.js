@@ -350,6 +350,22 @@ const noCoursesMsg = document.getElementById('no-courses-msg');
 
 // Initialization
 function init() {
+    // Load user name from localStorage
+    const savedName = localStorage.getItem('talex-user-name');
+    if (savedName) {
+        const welcomeNameEl = document.getElementById('welcome-user-name');
+        if (welcomeNameEl) {
+            // Extract just the first name for the welcome banner
+            const firstName = savedName.split(' ')[0];
+            welcomeNameEl.textContent = firstName;
+        }
+        
+        const profileInputEl = document.getElementById('profile-name-input');
+        if (profileInputEl) {
+            profileInputEl.value = savedName;
+        }
+    }
+
     renderCourses();
     setupEventListeners();
     setupNavigation();

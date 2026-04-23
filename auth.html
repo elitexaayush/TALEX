@@ -470,6 +470,23 @@
                     btn.innerHTML = 'Initiating Launch...';
                     btn.style.opacity = '0.7';
                     btn.disabled = true;
+
+                    // Extract and save user name to localStorage
+                    let userName = 'Rahul Sharma'; // Default fallback
+                    if (form.id === 'signup-form') {
+                        const nameInput = document.getElementById('signup-name');
+                        if (nameInput && nameInput.value) {
+                            userName = nameInput.value;
+                        }
+                    } else if (form.id === 'login-form') {
+                        const emailInput = document.getElementById('login-email');
+                        if (emailInput && emailInput.value) {
+                            // Extract name from email (e.g., rahul.sharma@... -> Rahul Sharma)
+                            const emailPrefix = emailInput.value.split('@')[0];
+                            userName = emailPrefix.split('.').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                        }
+                    }
+                    localStorage.setItem('talex-user-name', userName);
                     
                     setTimeout(() => {
                         window.location.href = 'dashboard.html';
