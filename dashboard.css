@@ -1,19 +1,19 @@
 :root {
-    /* Relaxing Soft Theme (Little Dark, Little Light) */
-    --primary-indigo: #8B5CF6; /* Soft Violet */
-    --primary-sky: #38BDF8; /* Gentle Sky */
-    --primary-emerald: #34D399; /* Soft Mint */
-    --primary-rose: #FB7185; /* Soft Rose */
+    /* Deep Twilight Theme (Rich Dark & Relaxing) */
+    --primary-indigo: #A78BFA; /* Softer Violet */
+    --primary-sky: #60A5FA; /* Brighter Sky */
+    --primary-emerald: #34D399; /* Mint */
+    --primary-rose: #FB7185; /* Rose */
     
-    --bg-light: #EEF2F6; /* Soft cool dim gray */
-    --bg-card: #F8FAFC; /* Gentle off-white for cards */
+    --bg-light: #0F172A; /* Deep Navy Background */
+    --bg-card: #1E293B; /* Slate Card Background */
     
-    --text-dark: #334155; /* Muted slate, easy on the eyes */
-    --text-gray: #64748B;
-    --text-dim: #94A3B8;
+    --text-dark: #F1F5F9; /* Off-white text */
+    --text-gray: #94A3B8;
+    --text-dim: #64748B;
     
-    --white: #F8FAFC;
-    --border: #E2E8F0;
+    --white: #1E293B;
+    --border: #334155;
     
     /* Dynamic Gradients - Softer */
     --gradient-primary: linear-gradient(135deg, var(--primary-indigo), #A78BFA);
@@ -97,7 +97,7 @@ body:hover #cursor-glow {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: #fdfdfd;
+    background: #0F172A;
     overflow: hidden;
 }
 
@@ -105,7 +105,7 @@ body:hover #cursor-glow {
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
-    opacity: 0.3;
+    opacity: 0.2;
     z-index: -1;
     animation: drift 20s infinite alternate ease-in-out;
 }
