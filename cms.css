@@ -320,3 +320,112 @@
     padding: 2px 4px;
     border-radius: 4px;
 }
+
+/* Community Highlights Styles (Home View) */
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.post-card.content-card-style {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    transition: var(--transition-bounce);
+    box-shadow: var(--shadow-sm);
+}
+
+.post-card.content-card-style:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-indigo);
+    box-shadow: var(--shadow-lg);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.post-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-indigo);
+    padding: 2px;
+}
+
+.post-user {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-user strong {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.post-user span {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.type-badge-mini {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    background: rgba(167, 139, 250, 0.1);
+    color: var(--primary-indigo);
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+}
+
+.post-desc {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin: 1rem 0;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 4.8em; /* Approximate height for 3 lines */
+}
+
+.post-stats {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1.5rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+}
+
+.post-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.post-stats i {
+    width: 14px;
+    height: 14px;
+}
+
+body.dark-theme .post-card.content-card-style {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(10px);
+}

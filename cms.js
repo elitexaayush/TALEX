@@ -177,6 +177,7 @@ function handleFormSubmit() {
     showToast('Content published successfully!', 'success');
     renderFeed();
     renderProfileUploads();
+    renderCommunityHighlights();
 }
 
 function renderFeed() {
@@ -208,6 +209,7 @@ function renderFeed() {
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">${item.title}</h4>
+                            <p class="card-desc" style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${item.description}</p>
                             <div class="uploader-info">
                                 <img src="${item.uploader_avatar}" alt="">
                                 <span>${item.uploader}</span>
@@ -280,5 +282,44 @@ function deleteUpload(id) {
     }
 }
 
+function renderCommunityHighlights() {
+    const highlightsGrid = document.querySelector('.community-grid');
+    if (!highlightsGrid) return;
+
+    // Show top 3 recent uploads
+    const recentItems = uploads.slice(0, 3);
+    
+    highlightsGrid.innerHTML = recentItems.map(item => `
+        <div class="post-card content-card-style">
+            <div class="post-header">
+                <img src="${item.uploader_avatar}" alt="">
+                <div class="post-user">
+                    <strong>${item.uploader}</strong>
+                    <span>${item.created_at}</span>
+                </div>
+                <span class="type-badge-mini">${item.file_type}</span>
+            </div>
+            <h4>${item.title}</h4>
+            <p class="post-desc">${item.description}</p>
+            <div class="post-stats">
+                <span><i data-lucide="eye"></i> ${item.views}</span>
+                <span><i data-lucide="download"></i> ${item.downloads}</span>
+            </div>
+            <button class="btn btn-sm btn-primary-outline" onclick="document.getElementById('nav-community').click()">View Details</button>
+        </div>
+    `).join('');
+    
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+}
+
 // Initial call
+function initCMS() {
+    setupUploadHandlers();
+    renderFeed();
+    renderProfileUploads();
+    renderCommunityHighlights();
+}
+
 initCMS();
