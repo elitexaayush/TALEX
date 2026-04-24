@@ -379,6 +379,7 @@ const navBadges = document.getElementById('nav-badges');
 const navEvents = document.getElementById('nav-events');
 const navSettings = document.getElementById('nav-settings');
 const navJobs = document.getElementById('nav-jobs');
+const navCompanies = document.getElementById('nav-companies');
 
 const viewCommunity = document.getElementById('view-community');
 const viewProfile = document.getElementById('view-profile');
@@ -387,6 +388,7 @@ const viewBadges = document.getElementById('view-badges');
 const viewEvents = document.getElementById('view-events');
 const viewSettings = document.getElementById('view-settings');
 const viewJobs = document.getElementById('view-jobs');
+const viewCompanies = document.getElementById('view-companies');
 
 function setupNavigation() {
     navHome.onclick = (e) => {
@@ -446,6 +448,12 @@ function setupNavigation() {
             switchView('jobs');
         };
     }
+    if (navCompanies) {
+        navCompanies.onclick = (e) => {
+            e.preventDefault();
+            switchView('companies');
+        };
+    }
 
     // Settings Inner Tabs Logic
     const settingsTabs = document.querySelectorAll('.settings-tab');
@@ -473,6 +481,7 @@ function switchView(viewId) {
     if (viewId === 'events' && navEvents) navEvents.classList.add('active');
     if (viewId === 'settings' && navSettings) navSettings.classList.add('active');
     if (viewId === 'jobs' && navJobs) navJobs.classList.add('active');
+    if (viewId === 'companies' && navCompanies) navCompanies.classList.add('active');
 
     // Update Views
     document.querySelectorAll('.dashboard-view').forEach(view => view.classList.remove('active'));
@@ -507,6 +516,10 @@ function switchView(viewId) {
     if (viewId === 'jobs' && viewJobs) {
         viewJobs.classList.add('active');
         if (typeof renderJobsView === 'function') renderJobsView();
+    }
+    if (viewId === 'companies' && viewCompanies) {
+        viewCompanies.classList.add('active');
+        if (typeof renderCompaniesView === 'function') renderCompaniesView();
     }
 }
 

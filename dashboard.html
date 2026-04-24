@@ -117,6 +117,7 @@
                 </a>
                 <a href="#" class="menu-item"><i data-lucide="repeat"></i> <span>Skill Swap</span></a>
                 <a href="#" class="menu-item" id="nav-jobs"><i data-lucide="briefcase"></i> <span>Jobs & Internships</span></a>
+                <a href="#" class="menu-item" id="nav-companies"><i data-lucide="building-2"></i> <span>Companies</span></a>
                 <a href="#" class="menu-item" id="nav-events"><i data-lucide="calendar"></i> <span>Events & Hackathons</span></a>
                 <a href="#" class="menu-item" id="nav-leaderboard"><i data-lucide="trophy"></i> <span>Leaderboard</span></a>
                 <a href="#" class="menu-item" id="nav-publish-sidebar"><i data-lucide="plus-circle"></i> <span>Publish Content</span></a>
@@ -124,7 +125,7 @@
                 <a href="#" class="menu-item" id="nav-community"><i data-lucide="users"></i> <span>Community Hub</span></a>
                 <a href="#" class="menu-item" id="nav-profile"><i data-lucide="user"></i> <span>My Profile</span></a>
                 <a href="#" class="menu-item" id="nav-settings"><i data-lucide="settings"></i> <span>Settings</span></a>
-            </nav>
+            </div>
         </aside>
 
         <!-- Main Content -->
@@ -680,6 +681,29 @@
                     <!-- Top Student cards will be rendered here -->
                 </div>
             </div>
+
+            <!-- Companies View -->
+            <div id="view-companies" class="dashboard-view">
+                <div class="section-header">
+                    <div>
+                        <h2>Partner Companies</h2>
+                        <p class="section-subtitle">Top global companies actively hiring TALEX graduates and offering exclusive internships.</p>
+                    </div>
+                </div>
+                
+                <div class="filter-bar" style="margin-top: 1rem; margin-bottom: 2rem;">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active">All Partners</button>
+                        <button class="filter-btn">Tech Giants</button>
+                        <button class="filter-btn">Startups</button>
+                        <button class="filter-btn">Fintech</button>
+                    </div>
+                </div>
+
+                <div id="companies-grid" class="companies-grid-container">
+                    <!-- Company cards will be rendered here -->
+                </div>
+            </div>
         </main>
     </div>
 
@@ -796,6 +820,59 @@
         </div>
     </div>
 
+    <!-- Company Details Modal -->
+    <div class="modal-overlay" id="company-detail-modal">
+        <div class="modal-card company-detail-card">
+            <button class="modal-close" id="close-company-modal"><i data-lucide="x"></i></button>
+            <div class="modal-header-banner"></div>
+            <div class="modal-body">
+                <div class="comp-modal-top">
+                    <div class="comp-modal-logo-box">
+                        <img id="comp-modal-logo" src="" alt="">
+                    </div>
+                    <div class="comp-modal-title">
+                        <h2 id="comp-modal-name"></h2>
+                        <div class="comp-modal-meta">
+                            <span><i data-lucide="briefcase"></i> <span id="comp-modal-industry"></span></span>
+                            <span><i data-lucide="map-pin"></i> <span id="comp-modal-location"></span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comp-modal-section">
+                    <h3>About the Company</h3>
+                    <p id="comp-modal-desc"></p>
+                </div>
+
+                <div class="comp-modal-stats">
+                    <div class="comp-stat-pill">
+                        <span class="label">TALEX Hires</span>
+                        <span class="value" id="comp-modal-hires"></span>
+                    </div>
+                    <div class="comp-stat-pill">
+                        <span class="label">Open Roles</span>
+                        <span class="value" id="comp-modal-openings"></span>
+                    </div>
+                    <div class="comp-stat-pill">
+                        <span class="label">Rating</span>
+                        <span class="value"><span id="comp-modal-rating"></span> <i data-lucide="star" fill="currentColor"></i></span>
+                    </div>
+                </div>
+
+                <div class="comp-modal-section">
+                    <h3>Available Roles & Packages</h3>
+                    <div id="comp-modal-roles" class="roles-container">
+                        <!-- Roles injected via JS -->
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn btn-primary-outline btn-block" onclick="showToast('Company followed!', 'success')">Follow Updates</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast Notification Container -->
     <div class="toast-container" id="toast-container"></div>
 
@@ -805,6 +882,7 @@
     <script src="badges.js"></script>
     <script src="events.js"></script>
     <script src="jobs.js"></script>
+    <script src="companies.js"></script>
     <script>
         lucide.createIcons();
 
