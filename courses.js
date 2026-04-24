@@ -380,6 +380,7 @@ const navEvents = document.getElementById('nav-events');
 const navSettings = document.getElementById('nav-settings');
 const navJobs = document.getElementById('nav-jobs');
 const navCompanies = document.getElementById('nav-companies');
+const navResume = document.getElementById('nav-resume');
 
 const viewCommunity = document.getElementById('view-community');
 const viewProfile = document.getElementById('view-profile');
@@ -389,6 +390,7 @@ const viewEvents = document.getElementById('view-events');
 const viewSettings = document.getElementById('view-settings');
 const viewJobs = document.getElementById('view-jobs');
 const viewCompanies = document.getElementById('view-companies');
+const viewResume = document.getElementById('view-resume');
 
 function setupNavigation() {
     navHome.onclick = (e) => {
@@ -446,6 +448,12 @@ function setupNavigation() {
         navJobs.onclick = (e) => {
             e.preventDefault();
             switchView('jobs');
+        };
+    }
+    if (navResume) {
+        navResume.onclick = (e) => {
+            e.preventDefault();
+            switchView('resume');
         };
     }
     if (navCompanies) {
@@ -520,6 +528,14 @@ function switchView(viewId) {
     if (viewId === 'companies' && viewCompanies) {
         viewCompanies.classList.add('active');
         if (typeof renderCompaniesView === 'function') renderCompaniesView();
+    }
+
+    if (viewId === 'resume') {
+        if (navResume) navResume.classList.add('active');
+        if (viewResume) {
+            viewResume.classList.add('active');
+            if (typeof initResumeBuilder === 'function') initResumeBuilder();
+        }
     }
 }
 
