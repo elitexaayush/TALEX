@@ -788,10 +788,14 @@
                             <h3><i data-lucide="code"></i> Skills</h3>
                             <textarea id="res-skills" rows="3" placeholder="e.g. React.js, Node.js, Python, Figma, SQL (Separate with commas)"></textarea>
                         </div>
+
+                        <div class="form-actions" style="margin-top: 2rem;">
+                            <button class="btn btn-primary btn-block" id="build-resume-btn">Build My Resume</button>
+                        </div>
                     </div>
 
-                    <!-- Preview Side -->
-                    <div class="resume-preview-pane">
+                    <!-- Preview Side (Hidden by default until build) -->
+                    <div class="resume-preview-pane" id="resume-preview-pane" style="display: none;">
                         <div class="resume-paper" id="resume-paper">
                             <header class="res-header">
                                 <h1 id="pre-name">RAHUL SHARMA</h1>

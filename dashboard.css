@@ -2619,14 +2619,14 @@ body.dark-theme .comp-modal-logo-box {
 
 /* Resume Builder Styles */
 .resume-builder-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 2rem;
     margin-top: 2rem;
     height: calc(100vh - 250px);
 }
 
 .resume-editor {
+    flex: 1;
     overflow-y: auto;
     padding-right: 1rem;
     display: flex;
@@ -2680,6 +2680,7 @@ body.dark-theme .comp-modal-logo-box {
 }
 
 .resume-preview-pane {
+    flex: 1;
     background: #525659;
     border-radius: 20px;
     padding: 2rem;
